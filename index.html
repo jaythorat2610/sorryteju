@@ -25,10 +25,8 @@
     overflow: hidden;
   }
   .heart-float {
-    position: absolute;
-    font-size: 1.4rem;
-    opacity: 0;
-    animation: floatUp linear infinite;
+    position: absolute; font-size: 1.4rem;
+    opacity: 0; animation: floatUp linear infinite;
   }
   @keyframes floatUp {
     0%   { transform: translateY(100vh) scale(0.5) rotate(-15deg); opacity: 0; }
@@ -47,12 +45,9 @@
   }
 
   .slide {
-    display: none;
-    width: 100%;
+    display: none; width: 100%;
     animation: fadeIn 0.6s ease;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    flex-direction: column; align-items: center; text-align: center;
   }
   .slide.active { display: flex; }
   @keyframes fadeIn {
@@ -60,96 +55,69 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .gif-img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    border-radius: 20px;
-    margin: 0 auto 16px;
-    display: block;
-    background: rgba(255,255,255,0.6);
-    padding: 8px;
-    box-shadow: 0 4px 20px rgba(192,57,106,0.15);
-  }
-
-  /* Emoji fallback box shown when GIF fails */
-  .gif-fallback {
+  .gif-box {
     width: 200px; height: 200px;
     border-radius: 20px;
     margin: 0 auto 16px;
+    overflow: hidden;
+    background: #fce4ec;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(255,255,255,0.7);
-    font-size: 5rem;
-    box-shadow: 0 4px 20px rgba(192,57,106,0.15);
+    box-shadow: 0 4px 20px rgba(192,57,106,0.18);
+  }
+  .gif-box img {
+    width: 100%; height: 100%; object-fit: cover;
   }
 
   .slide-title {
     font-family: 'Dancing Script', cursive;
     font-size: 2rem; font-weight: 700;
-    color: #c0396a;
-    margin-bottom: 12px;
-    line-height: 1.2;
+    color: #c0396a; margin-bottom: 12px; line-height: 1.2;
   }
   .slide-title.italic { font-style: italic; }
 
   .msg-card {
     background: rgba(255,255,255,0.85);
-    border-radius: 20px;
-    padding: 18px 20px;
-    margin: 10px 0 20px;
-    font-size: 1.05rem;
-    color: #c0396a;
-    font-family: 'Dancing Script', cursive;
-    font-weight: 600;
-    line-height: 1.6;
-    box-shadow: 0 4px 20px rgba(192,57,106,0.12);
-    width: 100%;
+    border-radius: 20px; padding: 18px 20px;
+    margin: 10px 0 20px; font-size: 1.05rem;
+    color: #c0396a; font-family: 'Dancing Script', cursive;
+    font-weight: 600; line-height: 1.6;
+    box-shadow: 0 4px 20px rgba(192,57,106,0.12); width: 100%;
   }
 
   .btn-row {
     display: flex; gap: 12px;
-    justify-content: center;
-    margin-top: 10px; width: 100%;
+    justify-content: center; margin-top: 10px; width: 100%;
   }
   .btn-next {
     background: linear-gradient(135deg, #e8607a, #c0396a);
-    color: #fff; border: none;
-    padding: 14px 32px; border-radius: 50px;
-    font-size: 1rem; font-family: 'Nunito', sans-serif;
-    font-weight: 700; cursor: pointer;
-    box-shadow: 0 4px 18px rgba(192,57,106,0.35);
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .btn-next:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(192,57,106,0.45); }
-  .btn-back {
-    background: rgba(255,255,255,0.7);
-    color: #c0396a; border: 2px solid #e8a0b4;
-    padding: 14px 24px; border-radius: 50px;
-    font-size: 1rem; font-family: 'Nunito', sans-serif;
-    font-weight: 700; cursor: pointer;
+    color: #fff; border: none; padding: 14px 32px; border-radius: 50px;
+    font-size: 1rem; font-family: 'Nunito', sans-serif; font-weight: 700;
+    cursor: pointer; box-shadow: 0 4px 18px rgba(192,57,106,0.35);
     transition: transform 0.15s;
+  }
+  .btn-next:hover { transform: scale(1.05); }
+  .btn-back {
+    background: rgba(255,255,255,0.7); color: #c0396a;
+    border: 2px solid #e8a0b4; padding: 14px 24px; border-radius: 50px;
+    font-size: 1rem; font-family: 'Nunito', sans-serif; font-weight: 700;
+    cursor: pointer; transition: transform 0.15s;
   }
   .btn-back:hover { transform: scale(1.05); }
 
   #slide-0 .landing-title {
     font-family: 'Dancing Script', cursive;
     font-size: 2.4rem; font-weight: 700;
-    color: #c0396a; margin-bottom: 8px;
-    line-height: 1.3;
+    color: #c0396a; margin-bottom: 8px; line-height: 1.3;
   }
   #slide-0 .landing-sub {
-    font-size: 1rem; color: #c07090;
-    margin-bottom: 28px; line-height: 1.5;
+    font-size: 1rem; color: #c07090; margin-bottom: 28px; line-height: 1.5;
   }
   .btn-listen {
     background: linear-gradient(135deg, #e8607a, #c0396a);
-    color: #fff; border: none;
-    padding: 16px 36px; border-radius: 50px;
-    font-size: 1.1rem; font-family: 'Nunito', sans-serif;
-    font-weight: 700; cursor: pointer;
-    box-shadow: 0 6px 24px rgba(192,57,106,0.4);
+    color: #fff; border: none; padding: 16px 36px; border-radius: 50px;
+    font-size: 1.1rem; font-family: 'Nunito', sans-serif; font-weight: 700;
+    cursor: pointer; box-shadow: 0 6px 24px rgba(192,57,106,0.4);
     animation: pulse 1.8s ease-in-out infinite;
-    transition: transform 0.15s;
   }
   @keyframes pulse {
     0%,100% { box-shadow: 0 6px 24px rgba(192,57,106,0.4); }
@@ -157,13 +125,9 @@
   }
 
   #slide-4 .envelope-wrap {
-    cursor: pointer;
-    transition: transform 0.3s;
-    margin: 20px 0;
-    font-size: 9rem;
+    cursor: pointer; margin: 20px 0; font-size: 9rem;
     animation: bounce 1.2s ease-in-out infinite;
-    display: block;
-    text-align: center;
+    display: block; text-align: center; transition: transform 0.3s;
   }
   #slide-4 .envelope-wrap:hover { transform: scale(1.1); }
   #slide-4 .click-label {
@@ -178,153 +142,106 @@
 
   #slide-5 .peace-label {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.2rem; color: #c0396a;
-    font-style: italic; margin-bottom: 10px;
+    font-size: 1.2rem; color: #c0396a; font-style: italic; margin-bottom: 10px;
   }
   #slide-5 .letter-card {
-    background: #fffaf0;
-    border-radius: 20px;
-    padding: 22px 20px;
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.05rem; color: #5a3040;
-    line-height: 1.8;
-    box-shadow: 0 4px 24px rgba(192,57,106,0.15);
-    text-align: left; width: 100%;
-    margin-bottom: 16px;
+    background: #fffaf0; border-radius: 20px; padding: 22px 20px;
+    font-family: 'Dancing Script', cursive; font-size: 1.05rem; color: #5a3040;
+    line-height: 1.8; box-shadow: 0 4px 24px rgba(192,57,106,0.15);
+    text-align: left; width: 100%; margin-bottom: 16px;
   }
   #slide-5 .letter-card .greeting {
     font-size: 1.3rem; font-weight: 700;
-    color: #c0396a; margin-bottom: 10px;
-    display: block;
+    color: #c0396a; margin-bottom: 10px; display: block;
   }
 
   #slide-6 .meter-card {
-    background: #fff;
-    border-radius: 24px;
-    padding: 24px 20px;
-    width: 100%;
+    background: #fff; border-radius: 24px; padding: 24px 20px; width: 100%;
     box-shadow: 0 4px 24px rgba(192,57,106,0.15);
     display: flex; flex-direction: column; align-items: center; gap: 16px;
   }
   #slide-6 .meter-title {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.6rem; font-weight: 700;
-    color: #c0396a;
+    font-size: 1.6rem; font-weight: 700; color: #c0396a;
   }
   .progress-bar-bg {
-    width: 100%; height: 22px;
-    background: #fcd5e0;
+    width: 100%; height: 22px; background: #fcd5e0;
     border-radius: 50px; overflow: hidden;
   }
   .progress-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #e8607a, #c0396a);
-    border-radius: 50px;
-    transition: width 0.6s cubic-bezier(.4,0,.2,1);
-    width: 10%;
+    height: 100%; background: linear-gradient(90deg, #e8607a, #c0396a);
+    border-radius: 50px; transition: width 0.6s cubic-bezier(.4,0,.2,1); width: 10%;
   }
   .forgive-pct {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1.4rem; font-weight: 800;
-    color: #c0396a;
+    font-family: 'Nunito', sans-serif; font-size: 1.4rem; font-weight: 800; color: #c0396a;
   }
   .tap-label {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.1rem; color: #e8607a;
-    font-style: italic;
+    font-family: 'Dancing Script', cursive; font-size: 1.1rem; color: #e8607a; font-style: italic;
   }
   .heart-tap-btn {
     width: 80px; height: 80px;
     background: linear-gradient(135deg, #f4a0b8, #e8607a);
-    border: none; border-radius: 50%;
-    font-size: 2.2rem; cursor: pointer;
-    box-shadow: 0 6px 20px rgba(232,96,122,0.4);
-    transition: transform 0.15s, box-shadow 0.15s;
+    border: none; border-radius: 50%; font-size: 2.2rem; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(232,96,122,0.4); transition: transform 0.15s;
     display: flex; align-items: center; justify-content: center;
   }
   .heart-tap-btn:active { transform: scale(0.9); }
-  .heart-tap-btn:hover  { transform: scale(1.1); box-shadow: 0 8px 28px rgba(232,96,122,0.55); }
+  .heart-tap-btn:hover  { transform: scale(1.1); }
   .forgiven-msg {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.5rem; font-weight: 700;
-    color: #c0396a;
-    opacity: 0; transition: opacity 0.5s;
-    min-height: 36px;
+    font-family: 'Dancing Script', cursive; font-size: 1.5rem; font-weight: 700;
+    color: #c0396a; opacity: 0; transition: opacity 0.5s; min-height: 36px;
   }
   .forgiven-msg.show { opacity: 1; }
 
   #slide-7 .gifts-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.8rem; font-weight: 700;
+    font-family: 'Dancing Script', cursive; font-size: 1.8rem; font-weight: 700;
     color: #c0396a; margin-bottom: 16px;
   }
   .gift-card {
-    background: #fff;
-    border-radius: 20px;
-    padding: 16px 18px;
+    background: #fff; border-radius: 20px; padding: 16px 18px;
     width: 100%; margin-bottom: 12px;
     display: flex; flex-direction: column; align-items: center;
-    box-shadow: 0 4px 16px rgba(192,57,106,0.12);
-    gap: 6px;
+    box-shadow: 0 4px 16px rgba(192,57,106,0.12); gap: 6px;
   }
   .gift-card .gift-name {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.3rem; font-weight: 700;
-    color: #c0396a;
+    font-family: 'Dancing Script', cursive; font-size: 1.3rem; font-weight: 700; color: #c0396a;
   }
-  .gift-card .gift-desc {
-    font-size: 0.9rem; color: #888;
-    font-family: 'Nunito', sans-serif;
-  }
+  .gift-card .gift-desc { font-size: 0.9rem; color: #888; }
   .gift-card .redeemable {
     background: #e8f5e9; color: #388e3c;
-    font-size: 0.82rem; font-family: 'Nunito', sans-serif;
-    font-weight: 700; padding: 4px 12px;
-    border-radius: 20px;
+    font-size: 0.82rem; font-weight: 700; padding: 4px 12px; border-radius: 20px;
   }
 
   #slide-8 .stickers-row {
-    display: flex; flex-wrap: wrap;
-    justify-content: center; gap: 10px;
-    margin-bottom: 16px;
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 16px;
   }
   #slide-8 .sticker {
-    width: 110px; height: 110px;
-    background: #fff; border-radius: 16px;
+    width: 110px; height: 110px; background: #fff; border-radius: 16px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 2.5rem;
-    box-shadow: 0 3px 14px rgba(192,57,106,0.15);
+    font-size: 2.5rem; box-shadow: 0 3px 14px rgba(192,57,106,0.15);
     flex-direction: column; gap: 4px;
   }
   #slide-8 .peace-card {
-    background: #fff; border-radius: 24px;
-    padding: 22px 20px; width: 100%;
+    background: #fff; border-radius: 24px; padding: 22px 20px; width: 100%;
     box-shadow: 0 4px 24px rgba(192,57,106,0.15);
   }
   #slide-8 .peace-card .pt-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.7rem; font-weight: 700;
+    font-family: 'Dancing Script', cursive; font-size: 1.7rem; font-weight: 700;
     color: #c0396a; margin-bottom: 4px;
   }
   #slide-8 .peace-card .pt-sub {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1rem; color: #e8a0b4;
+    font-family: 'Dancing Script', cursive; font-size: 1rem; color: #e8a0b4;
     margin-bottom: 14px; font-style: italic;
   }
   #slide-8 .peace-card .pt-body {
-    font-family: 'Nunito', sans-serif;
-    font-size: 1rem; color: #555; line-height: 1.7;
-    margin-bottom: 12px;
+    font-family: 'Nunito', sans-serif; font-size: 1rem; color: #555;
+    line-height: 1.7; margin-bottom: 12px;
   }
   #slide-8 .hearts-row { font-size: 1.6rem; letter-spacing: 4px; }
 
   .confetti-piece {
-    position: fixed;
-    width: 10px; height: 10px;
-    top: -10px;
-    border-radius: 2px;
-    animation: confettiFall linear forwards;
-    z-index: 999;
+    position: fixed; width: 10px; height: 10px; top: -10px;
+    border-radius: 2px; animation: confettiFall linear forwards; z-index: 999;
   }
   @keyframes confettiFall {
     0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
@@ -338,17 +255,23 @@
 
 <div id="app">
 
-  <!-- SLIDE 0 — Sad sorry crying cat -->
+  <!-- SLIDE 0 — Landing -->
   <div class="slide active" id="slide-0">
-    <div id="gif0" class="gif-fallback">😿</div>
+    <div class="gif-box">
+      <img src="sorry-cry.gif" alt="sorry cat"
+           onerror="this.parentElement.innerHTML='<span style=font-size:5rem>😿</span>'"/>
+    </div>
     <div class="landing-title">I Messed Up, Teju 😢</div>
     <div class="landing-sub">But I'm ready to make it right.<br/>Will you hear me out?</div>
     <button class="btn-listen" onclick="goTo(1)">Listen to my heart 💛</button>
   </div>
 
-  <!-- SLIDE 1 — Sorry bunny -->
+  <!-- SLIDE 1 — I Know I Hurt You -->
   <div class="slide" id="slide-1">
-    <div id="gif1" class="gif-fallback">🐰</div>
+    <div class="gif-box">
+      <img src="milk-and-mocha-milk-crying.gif" alt="crying bear"
+           onerror="this.parentElement.innerHTML='<span style=font-size:5rem>🐻</span>'"/>
+    </div>
     <div class="slide-title italic">I Know I Hurt You</div>
     <div class="msg-card">I messed up... and I'm really sorry for that.</div>
     <div class="btn-row">
@@ -357,9 +280,12 @@
     </div>
   </div>
 
-  <!-- SLIDE 2 — Bears hugging -->
+  <!-- SLIDE 2 — You Mean Everything -->
   <div class="slide" id="slide-2">
-    <div id="gif2" class="gif-fallback">🐻</div>
+    <div class="gif-box">
+      <img src="kitten-love.gif" alt="kitten love"
+           onerror="this.parentElement.innerHTML='<span style=font-size:5rem>🐱</span>'"/>
+    </div>
     <div class="slide-title italic">You Mean Everything</div>
     <div class="msg-card">I promise I'll be better for you.</div>
     <div class="btn-row">
@@ -368,9 +294,12 @@
     </div>
   </div>
 
-  <!-- SLIDE 3 — Sorry bear lying down -->
+  <!-- SLIDE 3 — I'm Truly Sorry -->
   <div class="slide" id="slide-3">
-    <div id="gif3" class="gif-fallback">🥺</div>
+    <div class="gif-box">
+      <img src="sorry-pk.gif" alt="sorry bear"
+           onerror="this.parentElement.innerHTML='<span style=font-size:5rem>🥺</span>'"/>
+    </div>
     <div class="slide-title italic">I'm Truly Sorry</div>
     <div class="msg-card">Please forgive me... You mean so much to me.</div>
     <div class="btn-row">
@@ -394,7 +323,10 @@
       Please forgive me if I hurt you or wasted even a little of your precious time. I promise I didn't mean to. 🥺🎁<br/><br/>
       You are everything to me, and losing your smile because of me is the worst feeling in the world. I'll always try to be better for you. 💕
     </div>
-    <div id="gif5" class="gif-fallback" style="width:170px;height:170px;font-size:4rem;">😿</div>
+    <div class="gif-box" style="width:170px;height:170px;">
+      <img src="sorry-cry.gif" alt="sorry cat"
+           onerror="this.parentElement.innerHTML='<span style=font-size:4rem>😿</span>'"/>
+    </div>
     <div class="btn-row" style="margin-top:16px;">
       <button class="btn-back" onclick="goTo(4)">← Back</button>
       <button class="btn-next" onclick="goTo(6)">Next →</button>
@@ -405,7 +337,10 @@
   <div class="slide" id="slide-6">
     <div class="meter-card">
       <div class="meter-title">FORGIVENESS METER ❤️</div>
-      <div id="gif6" class="gif-fallback" style="width:150px;height:150px;font-size:4rem;">🥺</div>
+      <div class="gif-box" style="width:150px;height:150px;">
+        <img src="tkthao219-bubududu.webp" alt="sorry bear"
+             onerror="this.src='sorry-pk.gif'"/>
+      </div>
       <div class="progress-bar-bg">
         <div class="progress-bar-fill" id="progressFill"></div>
       </div>
@@ -460,14 +395,14 @@
     </div>
     <div class="btn-row" style="margin-top:16px;">
       <button class="btn-back" onclick="goTo(7)">← Back</button>
-      <button class="btn-next" style="background:linear-gradient(135deg,#a8e063,#56ab2f);" onclick="launchConfetti(); this.textContent='💕 Forever!'">Start Fresh 💚</button>
+      <button class="btn-next" style="background:linear-gradient(135deg,#a8e063,#56ab2f);"
+              onclick="launchConfetti(); this.textContent='💕 Forever!'">Start Fresh 💚</button>
     </div>
   </div>
 
 </div>
 
 <script>
-  /* ── Floating hearts ── */
   const heartSymbols = ['💗','💕','💓','🩷','💖','❤️','🌸'];
   const bg = document.getElementById('heartsBg');
   for (let i = 0; i < 28; i++) {
@@ -481,36 +416,6 @@
     bg.appendChild(h);
   }
 
-  /* ── GIF loader with fallback ──
-     Tries to load a GIF into a container div.
-     If it loads OK → replaces the emoji fallback with the img.
-     If it fails    → keeps the cute emoji fallback.
-  */
-  function loadGif(containerId, url, fallbackEmoji) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    const img = new Image();
-    img.onload = function() {
-      img.style.cssText = container.style.cssText;
-      img.className = 'gif-img';
-      img.alt = fallbackEmoji;
-      container.replaceWith(img);
-    };
-    img.onerror = function() {
-      // keep emoji fallback — do nothing
-    };
-    img.src = url;
-  }
-
-  // Load all GIFs — these use the AAAAC (proper animated GIF) format from Tenor
-  loadGif('gif0', 'https://media.tenor.com/wnHdZSBTResAAAAC/sad-cat-crying.gif', '😿');
-  loadGif('gif1', 'https://media.tenor.com/0x0SLqZBV2MAAAAC/bunny-sad.gif', '🐰');
-  loadGif('gif2', 'https://media.tenor.com/MBnHMDNwq8IAAAAC/bear-hug-cute-bears.gif', '🐻');
-  loadGif('gif3', 'https://media.tenor.com/gFe3lHgMbnoAAAAC/sad-bear-sorry.gif', '🥺');
-  loadGif('gif5', 'https://media.tenor.com/wnHdZSBTResAAAAC/sad-cat-crying.gif', '😿');
-  loadGif('gif6', 'https://media.tenor.com/gFe3lHgMbnoAAAAC/sad-bear-sorry.gif', '🥺');
-
-  /* ── Navigation ── */
   let currentSlide = 0;
   function goTo(n) {
     document.getElementById('slide-' + currentSlide).classList.remove('active');
@@ -520,7 +425,6 @@
     if (n === 6) resetMeter();
   }
 
-  /* ── Forgiveness Meter ── */
   const steps = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   let stepIdx = 0;
 
@@ -539,12 +443,10 @@
     const forgiveness = steps[stepIdx];
     document.getElementById('progressFill').style.width = forgiveness + '%';
     document.getElementById('forgiveText').textContent = forgiveness + '% FORGIVEN';
-
     const btn = document.getElementById('heartTapBtn');
     btn.textContent = '❤️';
     btn.style.transform = 'scale(1.3)';
     setTimeout(() => { btn.style.transform = 'scale(1)'; }, 200);
-
     const msg = document.getElementById('forgivenMsg');
     if (forgiveness === 100) {
       msg.textContent = "YOU'RE FORGIVEN! 💕";
@@ -560,7 +462,6 @@
     }
   }
 
-  /* ── Confetti ── */
   function launchConfetti() {
     const colors = ['#e8607a','#c0396a','#f4a0b8','#fcd5e0','#fff','#ff6b9d','#ffb3c6'];
     for (let i = 0; i < 80; i++) {
