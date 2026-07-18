@@ -281,7 +281,8 @@
     </div>
     <div class="landing-title">I Messed Up, Teju 😢</div>
     <div class="landing-sub">But I'm ready to make it right.<br/>Will you hear me out?</div>
-    <button class="btn-listen" onclick="goTo(1)">Listen to my heart 💛</button>
+    <!-- ✅ FIX: startMusic() called directly in onclick for mobile compatibility -->
+    <button class="btn-listen" onclick="startMusic(); goTo(1)">Listen to my heart 💛</button>
   </div>
 
   <!-- SLIDE 1 — I Know I Hurt You -->
@@ -332,7 +333,7 @@
     <div class="click-label">CLICK TO OPEN ❤️</div>
   </div>
 
-  <!-- SLIDE 5 — Letter (UPDATED) -->
+  <!-- SLIDE 5 — Letter -->
   <div class="slide" id="slide-5">
     <div class="peace-label">✉️ A VIRTUAL PEACE OFFERING ❤️</div>
     <div class="letter-card">
@@ -437,16 +438,10 @@
     }).catch(() => {});
   }
 
+  // Try autoplay on load (works on desktop)
   window.addEventListener('load', () => { startMusic(); });
 
-  function onFirstInteraction() {
-    startMusic();
-    document.removeEventListener('click', onFirstInteraction);
-    document.removeEventListener('touchstart', onFirstInteraction);
-  }
-  document.addEventListener('click', onFirstInteraction);
-  document.addEventListener('touchstart', onFirstInteraction);
-
+  // Music toggle button
   musicBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     if (!musicStarted) { startMusic(); return; }
