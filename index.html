@@ -60,7 +60,6 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* GIF image style */
   .gif-img {
     width: 200px;
     height: 200px;
@@ -70,6 +69,17 @@
     display: block;
     background: rgba(255,255,255,0.6);
     padding: 8px;
+    box-shadow: 0 4px 20px rgba(192,57,106,0.15);
+  }
+
+  /* Emoji fallback box shown when GIF fails */
+  .gif-fallback {
+    width: 200px; height: 200px;
+    border-radius: 20px;
+    margin: 0 auto 16px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.7);
+    font-size: 5rem;
     box-shadow: 0 4px 20px rgba(192,57,106,0.15);
   }
 
@@ -121,7 +131,6 @@
   }
   .btn-back:hover { transform: scale(1.05); }
 
-  /* SLIDE 0 */
   #slide-0 .landing-title {
     font-family: 'Dancing Script', cursive;
     font-size: 2.4rem; font-weight: 700;
@@ -147,7 +156,6 @@
     50%      { box-shadow: 0 8px 32px rgba(192,57,106,0.65); }
   }
 
-  /* SLIDE 4 — Envelope */
   #slide-4 .envelope-wrap {
     cursor: pointer;
     transition: transform 0.3s;
@@ -168,7 +176,6 @@
     50%      { transform: translateY(-8px); }
   }
 
-  /* SLIDE 5 — Letter */
   #slide-5 .peace-label {
     font-family: 'Dancing Script', cursive;
     font-size: 1.2rem; color: #c0396a;
@@ -191,7 +198,6 @@
     display: block;
   }
 
-  /* SLIDE 6 — Forgiveness Meter */
   #slide-6 .meter-card {
     background: #fff;
     border-radius: 24px;
@@ -247,7 +253,6 @@
   }
   .forgiven-msg.show { opacity: 1; }
 
-  /* SLIDE 7 — Virtual Gifts */
   #slide-7 .gifts-title {
     font-family: 'Dancing Script', cursive;
     font-size: 1.8rem; font-weight: 700;
@@ -278,7 +283,6 @@
     border-radius: 20px;
   }
 
-  /* SLIDE 8 — Peace Treaty */
   #slide-8 .stickers-row {
     display: flex; flex-wrap: wrap;
     justify-content: center; gap: 10px;
@@ -314,7 +318,6 @@
   }
   #slide-8 .hearts-row { font-size: 1.6rem; letter-spacing: 4px; }
 
-  /* CONFETTI */
   .confetti-piece {
     position: fixed;
     width: 10px; height: 10px;
@@ -335,23 +338,17 @@
 
 <div id="app">
 
-  <!-- SLIDE 0 — Landing: Sad crying kitten / sorry cat -->
+  <!-- SLIDE 0 — Sad sorry crying cat -->
   <div class="slide active" id="slide-0">
-    <img class="gif-img"
-      src="https://media.tenor.com/FWWLBZZ8lZsAAAAi/sad-cat-crying-cat.gif"
-      alt="sad sorry cat"
-      onerror="this.src='https://media.tenor.com/YEvm-RgUadsAAAAi/sad-crying.gif'"/>
+    <div id="gif0" class="gif-fallback">😿</div>
     <div class="landing-title">I Messed Up, Teju 😢</div>
     <div class="landing-sub">But I'm ready to make it right.<br/>Will you hear me out?</div>
     <button class="btn-listen" onclick="goTo(1)">Listen to my heart 💛</button>
   </div>
 
-  <!-- SLIDE 1 — I Know I Hurt You: Sad bunny holding heart -->
+  <!-- SLIDE 1 — Sorry bunny -->
   <div class="slide" id="slide-1">
-    <img class="gif-img"
-      src="https://media.tenor.com/OcH4SGvCZIcAAAAi/sorry-apology.gif"
-      alt="sorry bunny"
-      onerror="this.src='https://media.tenor.com/ZaGXTJGCdUcAAAAi/cute-bunny-sad.gif'"/>
+    <div id="gif1" class="gif-fallback">🐰</div>
     <div class="slide-title italic">I Know I Hurt You</div>
     <div class="msg-card">I messed up... and I'm really sorry for that.</div>
     <div class="btn-row">
@@ -360,12 +357,9 @@
     </div>
   </div>
 
-  <!-- SLIDE 2 — You Mean Everything: Two cute bears hugging -->
+  <!-- SLIDE 2 — Bears hugging -->
   <div class="slide" id="slide-2">
-    <img class="gif-img"
-      src="https://media.tenor.com/yECiSMkZdkMAAAAi/bear-hug-cute.gif"
-      alt="bear hug"
-      onerror="this.src='https://media.tenor.com/PpHxUPPxEN4AAAAi/cute-bear-hug.gif'"/>
+    <div id="gif2" class="gif-fallback">🐻</div>
     <div class="slide-title italic">You Mean Everything</div>
     <div class="msg-card">I promise I'll be better for you.</div>
     <div class="btn-row">
@@ -374,12 +368,9 @@
     </div>
   </div>
 
-  <!-- SLIDE 3 — I'm Truly Sorry: Cute bear lying down sad / sorry na -->
+  <!-- SLIDE 3 — Sorry bear lying down -->
   <div class="slide" id="slide-3">
-    <img class="gif-img"
-      src="https://media.tenor.com/TflBmxYPbYYAAAAi/sad-bear-sorry.gif"
-      alt="sorry bear lying down"
-      onerror="this.src='https://media.tenor.com/8M4uABCFDJYAAAAi/sad-bear.gif'"/>
+    <div id="gif3" class="gif-fallback">🥺</div>
     <div class="slide-title italic">I'm Truly Sorry</div>
     <div class="msg-card">Please forgive me... You mean so much to me.</div>
     <div class="btn-row">
@@ -403,27 +394,18 @@
       Please forgive me if I hurt you or wasted even a little of your precious time. I promise I didn't mean to. 🥺🎁<br/><br/>
       You are everything to me, and losing your smile because of me is the worst feeling in the world. I'll always try to be better for you. 💕
     </div>
-    <!-- Cute cat with "itna gussa aap par acha nahi lagta" vibe -->
-    <img class="gif-img"
-      src="https://media.tenor.com/fxrRWfMVbOoAAAAi/cute-cat-pleading.gif"
-      alt="pleading sorry cat"
-      style="width:170px;height:170px;"
-      onerror="this.src='https://media.tenor.com/YEvm-RgUadsAAAAi/sad-crying.gif'"/>
+    <div id="gif5" class="gif-fallback" style="width:170px;height:170px;font-size:4rem;">😿</div>
     <div class="btn-row" style="margin-top:16px;">
       <button class="btn-back" onclick="goTo(4)">← Back</button>
       <button class="btn-next" onclick="goTo(6)">Next →</button>
     </div>
   </div>
 
-  <!-- SLIDE 6 — Forgiveness Meter: Sad bear lying down "sorry na" -->
+  <!-- SLIDE 6 — Forgiveness Meter -->
   <div class="slide" id="slide-6">
     <div class="meter-card">
       <div class="meter-title">FORGIVENESS METER ❤️</div>
-      <img
-        src="https://media.tenor.com/TflBmxYPbYYAAAAi/sad-bear-sorry.gif"
-        alt="sorry bear"
-        style="width:150px;height:150px;object-fit:contain;border-radius:16px;background:rgba(255,220,230,0.3);"
-        onerror="this.src='https://media.tenor.com/8M4uABCFDJYAAAAi/sad-bear.gif'"/>
+      <div id="gif6" class="gif-fallback" style="width:150px;height:150px;font-size:4rem;">🥺</div>
       <div class="progress-bar-bg">
         <div class="progress-bar-fill" id="progressFill"></div>
       </div>
@@ -437,28 +419,24 @@
   <!-- SLIDE 7 — Virtual Gifts -->
   <div class="slide" id="slide-7">
     <div class="gifts-title">🎁 Virtual Gifts For You, Teju</div>
-
     <div class="gift-card">
       <div style="font-size:3.5rem;">💐</div>
       <div class="gift-name">FRESH BLOOMS 🌸</div>
       <div class="gift-desc">Valid for 1 bouquet delivery + unlimited forehead kisses 💕</div>
       <div class="redeemable">✅ Redeemable anytime</div>
     </div>
-
     <div class="gift-card">
       <div style="font-size:3.5rem;">🧸</div>
       <div class="gift-name">CUDDLE PASS 🐻</div>
       <div class="gift-desc">Valid for unlimited hugs, cuddles & no drama day 🤩</div>
       <div class="redeemable">✅ Redeemable anytime</div>
     </div>
-
     <div class="gift-card">
       <div style="font-size:3.5rem;">🍫</div>
       <div class="gift-name">SWEET TREAT 🍫</div>
       <div class="gift-desc">Valid for your fav chocolate + a cute date 🥰</div>
       <div class="redeemable">✅ Redeemable anytime</div>
     </div>
-
     <div class="btn-row">
       <button class="btn-back" onclick="goTo(6)">← Back</button>
       <button class="btn-next" onclick="goTo(8)">Next →</button>
@@ -489,7 +467,7 @@
 </div>
 
 <script>
-  /* Floating hearts */
+  /* ── Floating hearts ── */
   const heartSymbols = ['💗','💕','💓','🩷','💖','❤️','🌸'];
   const bg = document.getElementById('heartsBg');
   for (let i = 0; i < 28; i++) {
@@ -503,7 +481,36 @@
     bg.appendChild(h);
   }
 
-  /* Navigation */
+  /* ── GIF loader with fallback ──
+     Tries to load a GIF into a container div.
+     If it loads OK → replaces the emoji fallback with the img.
+     If it fails    → keeps the cute emoji fallback.
+  */
+  function loadGif(containerId, url, fallbackEmoji) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const img = new Image();
+    img.onload = function() {
+      img.style.cssText = container.style.cssText;
+      img.className = 'gif-img';
+      img.alt = fallbackEmoji;
+      container.replaceWith(img);
+    };
+    img.onerror = function() {
+      // keep emoji fallback — do nothing
+    };
+    img.src = url;
+  }
+
+  // Load all GIFs — these use the AAAAC (proper animated GIF) format from Tenor
+  loadGif('gif0', 'https://media.tenor.com/wnHdZSBTResAAAAC/sad-cat-crying.gif', '😿');
+  loadGif('gif1', 'https://media.tenor.com/0x0SLqZBV2MAAAAC/bunny-sad.gif', '🐰');
+  loadGif('gif2', 'https://media.tenor.com/MBnHMDNwq8IAAAAC/bear-hug-cute-bears.gif', '🐻');
+  loadGif('gif3', 'https://media.tenor.com/gFe3lHgMbnoAAAAC/sad-bear-sorry.gif', '🥺');
+  loadGif('gif5', 'https://media.tenor.com/wnHdZSBTResAAAAC/sad-cat-crying.gif', '😿');
+  loadGif('gif6', 'https://media.tenor.com/gFe3lHgMbnoAAAAC/sad-bear-sorry.gif', '🥺');
+
+  /* ── Navigation ── */
   let currentSlide = 0;
   function goTo(n) {
     document.getElementById('slide-' + currentSlide).classList.remove('active');
@@ -513,7 +520,7 @@
     if (n === 6) resetMeter();
   }
 
-  /* Forgiveness Meter */
+  /* ── Forgiveness Meter ── */
   const steps = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   let stepIdx = 0;
 
@@ -553,7 +560,7 @@
     }
   }
 
-  /* Confetti */
+  /* ── Confetti ── */
   function launchConfetti() {
     const colors = ['#e8607a','#c0396a','#f4a0b8','#fcd5e0','#fff','#ff6b9d','#ffb3c6'];
     for (let i = 0; i < 80; i++) {
