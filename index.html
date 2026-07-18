@@ -60,16 +60,17 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .gif-wrap {
-    width: 200px; height: 200px;
-    margin: 0 auto 16px;
-    display: flex; align-items: center; justify-content: center;
+  /* GIF image style */
+  .gif-img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
     border-radius: 20px;
-    overflow: hidden;
-  }
-  .gif-wrap img {
-    width: 100%; height: 100%;
-    object-fit: cover; border-radius: 20px;
+    margin: 0 auto 16px;
+    display: block;
+    background: rgba(255,255,255,0.6);
+    padding: 8px;
+    box-shadow: 0 4px 20px rgba(192,57,106,0.15);
   }
 
   .slide-title {
@@ -153,6 +154,8 @@
     margin: 20px 0;
     font-size: 9rem;
     animation: bounce 1.2s ease-in-out infinite;
+    display: block;
+    text-align: center;
   }
   #slide-4 .envelope-wrap:hover { transform: scale(1.1); }
   #slide-4 .click-label {
@@ -186,13 +189,6 @@
     font-size: 1.3rem; font-weight: 700;
     color: #c0396a; margin-bottom: 10px;
     display: block;
-  }
-  #slide-5 .cat-gif {
-    width: 180px; height: 180px;
-    margin-top: 10px;
-    border-radius: 16px;
-    object-fit: cover;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
   }
 
   /* SLIDE 6 — Forgiveness Meter */
@@ -331,16 +327,6 @@
     0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
     100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
   }
-
-  /* GIF iframe embed */
-  .giphy-embed {
-    width: 200px; height: 200px;
-    border-radius: 20px;
-    overflow: hidden;
-    margin: 0 auto 16px;
-    border: none;
-    display: block;
-  }
 </style>
 </head>
 <body>
@@ -349,27 +335,23 @@
 
 <div id="app">
 
-  <!-- SLIDE 0 — Landing -->
+  <!-- SLIDE 0 — Landing: Sad crying kitten / sorry cat -->
   <div class="slide active" id="slide-0">
-    <!-- Sad sorry cat GIF -->
-    <iframe
-      class="giphy-embed"
-      src="https://giphy.com/embed/3o7TKwxYkeW0ZvTqsU"
-      allowFullScreen>
-    </iframe>
+    <img class="gif-img"
+      src="https://media.tenor.com/FWWLBZZ8lZsAAAAi/sad-cat-crying-cat.gif"
+      alt="sad sorry cat"
+      onerror="this.src='https://media.tenor.com/YEvm-RgUadsAAAAi/sad-crying.gif'"/>
     <div class="landing-title">I Messed Up, Teju 😢</div>
     <div class="landing-sub">But I'm ready to make it right.<br/>Will you hear me out?</div>
     <button class="btn-listen" onclick="goTo(1)">Listen to my heart 💛</button>
   </div>
 
-  <!-- SLIDE 1 — I Know I Hurt You -->
+  <!-- SLIDE 1 — I Know I Hurt You: Sad bunny holding heart -->
   <div class="slide" id="slide-1">
-    <!-- Cute bunny with heart GIF -->
-    <iframe
-      class="giphy-embed"
-      src="https://giphy.com/embed/l0HlFPNndZgxGBSBi"
-      allowFullScreen>
-    </iframe>
+    <img class="gif-img"
+      src="https://media.tenor.com/OcH4SGvCZIcAAAAi/sorry-apology.gif"
+      alt="sorry bunny"
+      onerror="this.src='https://media.tenor.com/ZaGXTJGCdUcAAAAi/cute-bunny-sad.gif'"/>
     <div class="slide-title italic">I Know I Hurt You</div>
     <div class="msg-card">I messed up... and I'm really sorry for that.</div>
     <div class="btn-row">
@@ -378,14 +360,12 @@
     </div>
   </div>
 
-  <!-- SLIDE 2 — You Mean Everything -->
+  <!-- SLIDE 2 — You Mean Everything: Two cute bears hugging -->
   <div class="slide" id="slide-2">
-    <!-- Two bears hugging GIF -->
-    <iframe
-      class="giphy-embed"
-      src="https://giphy.com/embed/kHU8W94VS329y"
-      allowFullScreen>
-    </iframe>
+    <img class="gif-img"
+      src="https://media.tenor.com/yECiSMkZdkMAAAAi/bear-hug-cute.gif"
+      alt="bear hug"
+      onerror="this.src='https://media.tenor.com/PpHxUPPxEN4AAAAi/cute-bear-hug.gif'"/>
     <div class="slide-title italic">You Mean Everything</div>
     <div class="msg-card">I promise I'll be better for you.</div>
     <div class="btn-row">
@@ -394,14 +374,12 @@
     </div>
   </div>
 
-  <!-- SLIDE 3 — I'm Truly Sorry -->
+  <!-- SLIDE 3 — I'm Truly Sorry: Cute bear lying down sad / sorry na -->
   <div class="slide" id="slide-3">
-    <!-- Sad bear sorry GIF -->
-    <iframe
-      class="giphy-embed"
-      src="https://giphy.com/embed/xT9IgG50Lg7russbDa"
-      allowFullScreen>
-    </iframe>
+    <img class="gif-img"
+      src="https://media.tenor.com/TflBmxYPbYYAAAAi/sad-bear-sorry.gif"
+      alt="sorry bear lying down"
+      onerror="this.src='https://media.tenor.com/8M4uABCFDJYAAAAi/sad-bear.gif'"/>
     <div class="slide-title italic">I'm Truly Sorry</div>
     <div class="msg-card">Please forgive me... You mean so much to me.</div>
     <div class="btn-row">
@@ -412,9 +390,7 @@
 
   <!-- SLIDE 4 — Envelope -->
   <div class="slide" id="slide-4">
-    <div class="envelope-wrap" onclick="goTo(5)">
-      💌
-    </div>
+    <div class="envelope-wrap" onclick="goTo(5)">💌</div>
     <div class="click-label">CLICK TO OPEN ❤️</div>
   </div>
 
@@ -427,30 +403,27 @@
       Please forgive me if I hurt you or wasted even a little of your precious time. I promise I didn't mean to. 🥺🎁<br/><br/>
       You are everything to me, and losing your smile because of me is the worst feeling in the world. I'll always try to be better for you. 💕
     </div>
-    <!-- Cute sorry cat GIF -->
-    <iframe
-      src="https://giphy.com/embed/VbnUQpnihPSIgIXuZv"
-      width="180" height="180"
-      style="border-radius:16px; border:none; display:block; margin:0 auto;"
-      allowFullScreen>
-    </iframe>
+    <!-- Cute cat with "itna gussa aap par acha nahi lagta" vibe -->
+    <img class="gif-img"
+      src="https://media.tenor.com/fxrRWfMVbOoAAAAi/cute-cat-pleading.gif"
+      alt="pleading sorry cat"
+      style="width:170px;height:170px;"
+      onerror="this.src='https://media.tenor.com/YEvm-RgUadsAAAAi/sad-crying.gif'"/>
     <div class="btn-row" style="margin-top:16px;">
       <button class="btn-back" onclick="goTo(4)">← Back</button>
       <button class="btn-next" onclick="goTo(6)">Next →</button>
     </div>
   </div>
 
-  <!-- SLIDE 6 — Forgiveness Meter -->
+  <!-- SLIDE 6 — Forgiveness Meter: Sad bear lying down "sorry na" -->
   <div class="slide" id="slide-6">
     <div class="meter-card">
       <div class="meter-title">FORGIVENESS METER ❤️</div>
-      <!-- Sad bear lying down GIF -->
-      <iframe
-        src="https://giphy.com/embed/xT9IgG50Lg7russbDa"
-        width="150" height="150"
-        style="border-radius:16px; border:none; display:block;"
-        allowFullScreen>
-      </iframe>
+      <img
+        src="https://media.tenor.com/TflBmxYPbYYAAAAi/sad-bear-sorry.gif"
+        alt="sorry bear"
+        style="width:150px;height:150px;object-fit:contain;border-radius:16px;background:rgba(255,220,230,0.3);"
+        onerror="this.src='https://media.tenor.com/8M4uABCFDJYAAAAi/sad-bear.gif'"/>
       <div class="progress-bar-bg">
         <div class="progress-bar-fill" id="progressFill"></div>
       </div>
