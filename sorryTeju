@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>I'm Sorry, Teju 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Pacifico&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #ffe8f0;
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hearts-bg {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none; z-index: 0;
+    overflow: hidden;
+  }
+  .heart-float {
+    position: absolute;
+    font-size: 1.4rem;
+    opacity: 0;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(100vh) scale(0.5) rotate(-15deg); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.4; }
+    100% { transform: translateY(-10vh) scale(1.1) rotate(15deg); opacity: 0; }
+  }
+
+  #app {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 420px;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px 16px;
+  }
+
+  .slide {
+    display: none;
+    width: 100%;
+    animation: fadeIn 0.6s ease;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .slide.active { display: flex; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .gif-wrap {
+    width: 180px; height: 180px;
+    margin: 0 auto 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gif-wrap img {
+    width: 100%; height: 100%;
+    object-fit: contain; border-radius: 16px;
+  }
+
+  .slide-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem; font-weight: 700;
+    color: #c0396a;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .slide-title.italic { font-style: italic; }
+
+  .msg-card {
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 18px 20px;
+    margin: 10px 0 20px;
+    font-size: 1.05rem;
+    color: #c0396a;
+    font-family: 'Dancing Script', cursive;
+    font-weight: 600;
+    line-height: 1.6;
+    box-shadow: 0 4px 20px rgba(192,57,106,0.12);
+    width: 100%;
+  }
+
+  .btn-row {
+    display: flex; gap: 12px;
+    justify-content: center;
+    margin-top: 10px; width: 100%;
+  }
+  .btn-next {
+    background: linear-gradient(135deg, #e8607a, #c0396a);
+    color: #fff; border: none;
+    padding: 14px 32px; border-radius: 50px;
+    font-size: 1rem; font-family: 'Nunito', sans-serif;
+    font-weight: 700; cursor: pointer;
+    box-shadow: 0 4px 18px rgba(192,57,106,0.35);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-next:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(192,57,106,0.45); }
+  .btn-back {
+    background: rgba(255,255,255,0.7);
+    color: #c0396a; border: 2px solid #e8a0b4;
+    padding: 14px 24px; border-radius: 50px;
+    font-size: 1rem; font-family: 'Nunito', sans-serif;
+    font-weight: 700; cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .btn-back:hover { transform: scale(1.05); }
+
+  /* SLIDE 0 */
+  #slide-0 .landing-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.4rem; font-weight: 700;
+    color: #c0396a; margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  #slide-0 .landing-sub {
+    font-size: 1rem; color: #c07090;
+    margin-bottom: 28px; line-height: 1.5;
+  }
+  .btn-listen {
+    background: linear-gradient(135deg, #e8607a, #c0396a);
+    color: #fff; border: none;
+    padding: 16px 36px; border-radius: 50px;
+    font-size: 1.1rem; font-family: 'Nunito', sans-serif;
+    font-weight: 700; cursor: pointer;
+    box-shadow: 0 6px 24px rgba(192,57,106,0.4);
+    animation: pulse 1.8s ease-in-out infinite;
+    transition: transform 0.15s;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 6px 24px rgba(192,57,106,0.4); }
+    50%      { box-shadow: 0 8px 32px rgba(192,57,106,0.65); }
+  }
+
+  /* SLIDE 4 — Envelope */
+  #slide-4 .envelope-wrap {
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin: 20px 0;
+  }
+  #slide-4 .envelope-wrap:hover { transform: scale(1.06) rotate(-2deg); }
+  #slide-4 .envelope-wrap img { width: 220px; filter: drop-shadow(0 8px 24px rgba(192,57,106,0.3)); }
+  #slide-4 .click-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem; color: #c0396a; font-weight: 700;
+    animation: bounce 1.2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+
+  /* SLIDE 5 — Letter */
+  #slide-5 .peace-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem; color: #c0396a;
+    font-style: italic; margin-bottom: 10px;
+  }
+  #slide-5 .letter-card {
+    background: #fffaf0;
+    border-radius: 20px;
+    padding: 22px 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.05rem; color: #5a3040;
+    line-height: 1.8;
+    box-shadow: 0 4px 24px rgba(192,57,106,0.15);
+    text-align: left; width: 100%;
+    margin-bottom: 16px;
+  }
+  #slide-5 .letter-card .greeting {
+    font-size: 1.3rem; font-weight: 700;
+    color: #c0396a; margin-bottom: 10px;
+    display: block;
+  }
+  #slide-5 .cat-gif {
+    width: 160px; margin-top: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+
+  /* SLIDE 6 — Forgiveness Meter */
+  #slide-6 .meter-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 24px 20px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(192,57,106,0.15);
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+  }
+  #slide-6 .meter-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem; font-weight: 700;
+    color: #c0396a;
+  }
+  .progress-bar-bg {
+    width: 100%; height: 22px;
+    background: #fcd5e0;
+    border-radius: 50px; overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e8607a, #c0396a);
+    border-radius: 50px;
+    transition: width 0.6s cubic-bezier(.4,0,.2,1);
+    width: 10%;
+  }
+  .forgive-pct {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.4rem; font-weight: 800;
+    color: #c0396a;
+  }
+  .tap-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem; color: #e8607a;
+    font-style: italic;
+  }
+  .heart-tap-btn {
+    width: 80px; height: 80px;
+    background: linear-gradient(135deg, #f4a0b8, #e8607a);
+    border: none; border-radius: 50%;
+    font-size: 2.2rem; cursor: pointer;
+    box-shadow: 0 6px 20px rgba(232,96,122,0.4);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .heart-tap-btn:active { transform: scale(0.9); }
+  .heart-tap-btn:hover  { transform: scale(1.1); box-shadow: 0 8px 28px rgba(232,96,122,0.55); }
+  .forgiven-msg {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.5rem; font-weight: 700;
+    color: #c0396a;
+    opacity: 0; transition: opacity 0.5s;
+    min-height: 36px;
+  }
+  .forgiven-msg.show { opacity: 1; }
+
+  /* SLIDE 7 — Virtual Gifts */
+  #slide-7 .gifts-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem; font-weight: 700;
+    color: #c0396a; margin-bottom: 16px;
+  }
+  .gift-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 16px 18px;
+    width: 100%; margin-bottom: 12px;
+    display: flex; flex-direction: column; align-items: center;
+    box-shadow: 0 4px 16px rgba(192,57,106,0.12);
+    gap: 6px;
+  }
+  .gift-card .gift-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem; font-weight: 700;
+    color: #c0396a;
+  }
+  .gift-card .gift-desc {
+    font-size: 0.9rem; color: #888;
+    font-family: 'Nunito', sans-serif;
+  }
+  .gift-card .redeemable {
+    background: #e8f5e9; color: #388e3c;
+    font-size: 0.82rem; font-family: 'Nunito', sans-serif;
+    font-weight: 700; padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* SLIDE 8 — Peace Treaty */
+  #slide-8 .stickers-row {
+    display: flex; flex-wrap: wrap;
+    justify-content: center; gap: 10px;
+    margin-bottom: 16px;
+  }
+  #slide-8 .sticker {
+    width: 110px; height: 110px;
+    background: #fff; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 3px 14px rgba(192,57,106,0.15);
+  }
+  #slide-8 .peace-card {
+    background: #fff; border-radius: 24px;
+    padding: 22px 20px; width: 100%;
+    box-shadow: 0 4px 24px rgba(192,57,106,0.15);
+  }
+  #slide-8 .peace-card .pt-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.7rem; font-weight: 700;
+    color: #c0396a; margin-bottom: 4px;
+  }
+  #slide-8 .peace-card .pt-sub {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem; color: #e8a0b4;
+    margin-bottom: 14px; font-style: italic;
+  }
+  #slide-8 .peace-card .pt-body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem; color: #555; line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  #slide-8 .hearts-row { font-size: 1.6rem; letter-spacing: 4px; }
+
+  /* CONFETTI */
+  .confetti-piece {
+    position: fixed;
+    width: 10px; height: 10px;
+    top: -10px;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+    z-index: 999;
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hearts-bg" id="heartsBg"></div>
+
+<div id="app">
+
+  <!-- SLIDE 0 — Landing -->
+  <div class="slide active" id="slide-0">
+    <div class="gif-wrap">
+      <!-- 🖼️ GIF: sad cat sorry — replace src with your own from tenor.com -->
+      <img src="https://media.tenor.com/vKHflUMN6v8AAAAi/im-sorry-please-forgive-me.gif"
+           alt="sorry cat"
+           onerror="this.src='https://media.giphy.com/media/3o7TKwxYkeW0ZvTqsU/giphy.gif'"/>
+    </div>
+    <div class="landing-title">I Messed Up, Teju 😢</div>
+    <div class="landing-sub">But I'm ready to make it right.<br/>Will you hear me out?</div>
+    <button class="btn-listen" onclick="goTo(1)">Listen to my heart 💛</button>
+  </div>
+
+  <!-- SLIDE 1 — I Know I Hurt You -->
+  <div class="slide" id="slide-1">
+    <div class="gif-wrap">
+      <!-- 🖼️ GIF: cute bunny holding heart — search "cute bunny heart sorry" on tenor.com -->
+      <img src="https://media.tenor.com/j7DhE2VKPCEAAAAC/cute-bunny.gif"
+           alt="bunny heart"
+           onerror="this.style.display='none'"/>
+    </div>
+    <div class="slide-title italic">I Know I Hurt You</div>
+    <div class="msg-card">I messed up... and I'm really sorry for that.</div>
+    <div class="btn-row">
+      <button class="btn-back" onclick="goTo(0)">← Back</button>
+      <button class="btn-next" onclick="goTo(2)">Next →</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 — You Mean Everything -->
+  <div class="slide" id="slide-2">
+    <div class="gif-wrap">
+      <!-- 🖼️ GIF: cute bear hug — search "cute bear hug love" on tenor.com -->
+      <img src="https://media.tenor.com/j2FYECb9PgcAAAAi/bear-hug.gif"
+           alt="bears hugging"
+           onerror="this.style.display='none'"/>
+    </div>
+    <div class="slide-title italic">You Mean Everything</div>
+    <div class="msg-card">I promise I'll be better for you.</div>
+    <div class="btn-row">
+      <button class="btn-back" onclick="goTo(1)">← Back</button>
+      <button class="btn-next" onclick="goTo(3)">Next →</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — I'm Truly Sorry -->
+  <div class="slide" id="slide-3">
+    <div class="gif-wrap" style="background:#fff; border-radius:16px; padding:10px; box-shadow:0 3px 16px rgba(192,57,106,0.12);">
+      <!-- 🖼️ GIF: bear lying down sorry — search "sorry na bear cute" on tenor.com -->
+      <img src="https://media.tenor.com/nDFdgCnMZs0AAAAi/sorry-bear.gif"
+           alt="sorry bear"
+           onerror="this.style.display='none'"/>
+    </div>
+    <div class="slide-title italic">I'm Truly Sorry</div>
+    <div class="msg-card">Please forgive me... You mean so much to me.</div>
+    <div class="btn-row">
+      <button class="btn-back" onclick="goTo(2)">← Back</button>
+      <button class="btn-next" onclick="goTo(4)">Next →</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 — Envelope -->
+  <div class="slide" id="slide-4">
+    <div class="envelope-wrap" onclick="goTo(5)">
+      <!-- 🖼️ IMAGE: envelope — click opens the letter -->
+      <img src="https://em-content.zobj.net/source/animated-noto-color-emoji/356/envelope-with-arrow_1f4e9.gif"
+           alt="envelope"
+           onerror="this.outerHTML='<div style=\'font-size:9rem;cursor:pointer;\'>💌</div>'"/>
+    </div>
+    <div class="click-label">CLICK TO OPEN ❤️</div>
+  </div>
+
+  <!-- SLIDE 5 — Letter -->
+  <div class="slide" id="slide-5">
+    <div class="peace-label">✉️ A VIRTUAL PEACE OFFERING ❤️</div>
+    <div class="letter-card">
+      <span class="greeting">My Dearest Teju,</span>
+      I'm really sorry, my love. I accidentally upset the most precious and adorable person in my life — you. 🥺<br/><br/>
+      Please forgive me if I hurt you or wasted even a little of your precious time. I promise I didn't mean to. 🥺🎁<br/><br/>
+      You are everything to me, and losing your smile because of me is the worst feeling in the world. I'll always try to be better for you. 💕
+    </div>
+    <!-- 🖼️ GIF: cute sorry cat — search "itna gussa cat" or "sorry cat cute" on tenor.com -->
+    <img class="cat-gif"
+         src="https://media.tenor.com/F4BRigDTt6kAAAAi/cat-sorry.gif"
+         alt="sorry cat"
+         onerror="this.style.display='none'"/>
+    <div class="btn-row" style="margin-top:16px;">
+      <button class="btn-back" onclick="goTo(4)">← Back</button>
+      <button class="btn-next" onclick="goTo(6)">Next →</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 — Forgiveness Meter -->
+  <div class="slide" id="slide-6">
+    <div class="meter-card">
+      <div class="meter-title">FORGIVENESS METER ❤️</div>
+      <!-- 🖼️ GIF: sad bear lying down "sorry na" — search on tenor.com -->
+      <img src="https://media.tenor.com/nDFdgCnMZs0AAAAi/sorry-bear.gif"
+           alt="sorry bear" style="width:140px; height:140px; object-fit:contain;"
+           onerror="this.style.display='none'"/>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressFill"></div>
+      </div>
+      <div class="forgive-pct" id="forgiveText">10% FORGIVEN</div>
+      <div class="tap-label">TAP THE HEART TO HEAL MY HEART!</div>
+      <div class="forgiven-msg" id="forgivenMsg"></div>
+      <button class="heart-tap-btn" id="heartTapBtn" onclick="tapHeart()">🤍</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 — Virtual Gifts -->
+  <div class="slide" id="slide-7">
+    <div class="gifts-title">🎁 Virtual Gifts For You, Teju</div>
+
+    <div class="gift-card">
+      <div style="font-size:3rem;">💐</div>
+      <div class="gift-name">FRESH BLOOMS 🌸</div>
+      <div class="gift-desc">Valid for 1 bouquet delivery + unlimited forehead kisses 💕</div>
+      <div class="redeemable">✅ Redeemable anytime</div>
+    </div>
+
+    <div class="gift-card">
+      <div style="font-size:3rem;">🧸</div>
+      <div class="gift-name">CUDDLE PASS 🐻</div>
+      <div class="gift-desc">Valid for unlimited hugs, cuddles & no drama day 🤩</div>
+      <div class="redeemable">✅ Redeemable anytime</div>
+    </div>
+
+    <div class="gift-card">
+      <div style="font-size:3rem;">🍫</div>
+      <div class="gift-name">SWEET TREAT 🍫</div>
+      <div class="gift-desc">Valid for your fav chocolate + a cute date 🥰</div>
+      <div class="redeemable">✅ Redeemable anytime</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-back" onclick="goTo(6)">← Back</button>
+      <button class="btn-next" onclick="goTo(8)">Next →</button>
+    </div>
+  </div>
+
+  <!-- SLIDE 8 — Peace Treaty -->
+  <div class="slide" id="slide-8">
+    <div class="stickers-row">
+      <div class="sticker">🕺</div>
+      <div class="sticker">🐻<br/><span style="font-size:0.6rem;color:#c0396a;">I love you berry much</span></div>
+      <div class="sticker">🌸<br/><span style="font-size:0.6rem;color:#c0396a;">flowers for my sweetheart!</span></div>
+    </div>
+    <div class="peace-card">
+      <div class="pt-title">PEACE TREATY SIGNED! 🕊️</div>
+      <div class="pt-sub">NEW BEGINNINGS AHEAD</div>
+      <div class="pt-body">
+        Thank you for being the most forgiving and wonderful person, Teju. I love you to the moon and back and I'm never letting go! 💚🙏
+      </div>
+      <div class="hearts-row">❤️❤️❤️❤️❤️</div>
+    </div>
+    <div class="btn-row" style="margin-top:16px;">
+      <button class="btn-back" onclick="goTo(7)">← Back</button>
+      <button class="btn-next" style="background:linear-gradient(135deg,#a8e063,#56ab2f);" onclick="launchConfetti(); this.textContent='💕 Forever!'">Start Fresh 💚</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  /* Floating hearts */
+  const heartSymbols = ['💗','💕','💓','🩷','💖','❤️','🌸'];
+  const bg = document.getElementById('heartsBg');
+  for (let i = 0; i < 28; i++) {
+    const h = document.createElement('div');
+    h.className = 'heart-float';
+    h.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (0.9 + Math.random() * 1.4) + 'rem';
+    h.style.animationDuration = (5 + Math.random() * 9) + 's';
+    h.style.animationDelay = (Math.random() * 10) + 's';
+    bg.appendChild(h);
+  }
+
+  /* Navigation */
+  let currentSlide = 0;
+  function goTo(n) {
+    document.getElementById('slide-' + currentSlide).classList.remove('active');
+    currentSlide = n;
+    document.getElementById('slide-' + n).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (n === 6) resetMeter();
+  }
+
+  /* Forgiveness Meter */
+  const steps = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  let stepIdx = 0;
+
+  function resetMeter() {
+    stepIdx = 0;
+    document.getElementById('progressFill').style.width = '10%';
+    document.getElementById('forgiveText').textContent = '10% FORGIVEN';
+    document.getElementById('heartTapBtn').textContent = '🤍';
+    const msg = document.getElementById('forgivenMsg');
+    msg.textContent = ''; msg.classList.remove('show');
+  }
+
+  function tapHeart() {
+    if (stepIdx >= steps.length - 1) { setTimeout(() => goTo(7), 600); return; }
+    stepIdx++;
+    const forgiveness = steps[stepIdx];
+    document.getElementById('progressFill').style.width = forgiveness + '%';
+    document.getElementById('forgiveText').textContent = forgiveness + '% FORGIVEN';
+
+    const btn = document.getElementById('heartTapBtn');
+    btn.textContent = '❤️';
+    btn.style.transform = 'scale(1.3)';
+    setTimeout(() => { btn.style.transform = 'scale(1)'; }, 200);
+
+    const msg = document.getElementById('forgivenMsg');
+    if (forgiveness === 100) {
+      msg.textContent = "YOU'RE FORGIVEN! 💕";
+      msg.classList.add('show');
+      launchConfetti();
+      setTimeout(() => goTo(7), 1800);
+    } else {
+      const phrases = ['','Keep going! 💕','A little more! 🥺','Almost there! 💗',
+                       'You\'re so kind! 🌸','My heart is healing! 💓',
+                       'So close! 💗','Just a bit more! 💕','Almost! 🥹',''];
+      msg.textContent = phrases[stepIdx] || '';
+      phrases[stepIdx] ? msg.classList.add('show') : msg.classList.remove('show');
+    }
+  }
+
+  /* Confetti */
+  function launchConfetti() {
+    const colors = ['#e8607a','#c0396a','#f4a0b8','#fcd5e0','#fff','#ff6b9d','#ffb3c6'];
+    for (let i = 0; i < 80; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.width  = (6 + Math.random() * 8) + 'px';
+      c.style.height = (6 + Math.random() * 8) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      c.style.animationDuration = (2 + Math.random() * 2.5) + 's';
+      c.style.animationDelay = (Math.random() * 0.8) + 's';
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 4000);
+    }
+  }
+</script>
+</body>
+</html>
