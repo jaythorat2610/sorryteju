@@ -64,9 +64,7 @@
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 4px 20px rgba(192,57,106,0.18);
   }
-  .gif-box img {
-    width: 100%; height: 100%; object-fit: cover;
-  }
+  .gif-box img { width: 100%; height: 100%; object-fit: cover; }
 
   .slide-title {
     font-family: 'Dancing Script', cursive;
@@ -275,7 +273,7 @@
 
 <div id="app">
 
-  <!-- SLIDE 0 — Landing: kitten-love.gif as requested -->
+  <!-- SLIDE 0 — Landing -->
   <div class="slide active" id="slide-0">
     <div class="gif-box">
       <img src="kitten-love.gif" alt="kitten love"
@@ -286,7 +284,7 @@
     <button class="btn-listen" onclick="goTo(1)">Listen to my heart 💛</button>
   </div>
 
-  <!-- SLIDE 1 — I Know I Hurt You: milk mocha crying bear -->
+  <!-- SLIDE 1 — I Know I Hurt You -->
   <div class="slide" id="slide-1">
     <div class="gif-box">
       <img src="milk-and-mocha-milk-crying.gif" alt="crying bear"
@@ -300,7 +298,7 @@
     </div>
   </div>
 
-  <!-- SLIDE 2 — You Mean Everything: cutest white cat -->
+  <!-- SLIDE 2 — You Mean Everything -->
   <div class="slide" id="slide-2">
     <div class="gif-box">
       <img src="cutest-white-cat.webp" alt="cute white cat"
@@ -314,7 +312,7 @@
     </div>
   </div>
 
-  <!-- SLIDE 3 — I'm Truly Sorry: sorry-pk.gif -->
+  <!-- SLIDE 3 — I'm Truly Sorry -->
   <div class="slide" id="slide-3">
     <div class="gif-box">
       <img src="sorry-pk.gif" alt="sorry bear"
@@ -334,14 +332,15 @@
     <div class="click-label">CLICK TO OPEN ❤️</div>
   </div>
 
-  <!-- SLIDE 5 — Letter: rabbit-bunny.webp -->
+  <!-- SLIDE 5 — Letter (UPDATED) -->
   <div class="slide" id="slide-5">
     <div class="peace-label">✉️ A VIRTUAL PEACE OFFERING ❤️</div>
     <div class="letter-card">
       <span class="greeting">My Dearest Teju,</span>
-      I'm really sorry, my love. I accidentally upset the most precious and adorable person in my life — you. 🥺<br/><br/>
-      Please forgive me if I hurt you or wasted even a little of your precious time. I promise I didn't mean to. 🥺🎁<br/><br/>
-      You are everything to me, and losing your smile because of me is the worst feeling in the world. I'll always try to be better for you. 💕
+      I'm truly sorry. I know I hurt you, and I take full responsibility for that — no excuses. 🥺<br/><br/>
+      Losing your smile because of me is something I never want to experience again. You are my happy place, my safe place — and I will protect that with everything I have. 💗<br/><br/>
+      I promise you — not just words — I will be more patient. You are too precious to me to keep making the same mistakes.<br/><br/>
+      You are my favorite person in this entire world, and your smile means everything to me. I'm not giving up on us. 💕
     </div>
     <div class="gif-box" style="width:170px;height:170px;">
       <img src="rabbit-bunny.webp" alt="bunny sorry"
@@ -353,7 +352,7 @@
     </div>
   </div>
 
-  <!-- SLIDE 6 — Forgiveness Meter: tkthao219-bubududu.webp -->
+  <!-- SLIDE 6 — Forgiveness Meter -->
   <div class="slide" id="slide-6">
     <div class="meter-card">
       <div class="meter-title">FORGIVENESS METER ❤️</div>
@@ -398,7 +397,7 @@
     </div>
   </div>
 
-  <!-- SLIDE 8 — Peace Treaty: cutest-white-cat.webp -->
+  <!-- SLIDE 8 — Peace Treaty -->
   <div class="slide" id="slide-8">
     <div class="stickers-row">
       <div class="sticker">🕺<span style="font-size:0.55rem;color:#c0396a;">Aaa Lag Jaa Gale</span></div>
@@ -430,22 +429,16 @@
 
   function startMusic() {
     if (musicStarted) return;
-    bgMusic.currentTime = 25; // start from 25 seconds
+    bgMusic.currentTime = 25;
     bgMusic.volume = 0.5;
     bgMusic.play().then(() => {
       musicStarted = true;
       musicBtn.textContent = '🎵';
-    }).catch(() => {
-      // Autoplay blocked — will retry on first user interaction
-    });
+    }).catch(() => {});
   }
 
-  // Try autoplay immediately on load
-  window.addEventListener('load', () => {
-    startMusic();
-  });
+  window.addEventListener('load', () => { startMusic(); });
 
-  // Fallback: start on first user interaction (tap/click) if autoplay was blocked
   function onFirstInteraction() {
     startMusic();
     document.removeEventListener('click', onFirstInteraction);
@@ -454,13 +447,9 @@
   document.addEventListener('click', onFirstInteraction);
   document.addEventListener('touchstart', onFirstInteraction);
 
-  // Music toggle button
   musicBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    if (!musicStarted) {
-      startMusic();
-      return;
-    }
+    if (!musicStarted) { startMusic(); return; }
     if (bgMusic.paused) {
       bgMusic.play();
       musicBtn.textContent = '🎵';
