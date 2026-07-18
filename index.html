@@ -61,13 +61,15 @@
   }
 
   .gif-wrap {
-    width: 180px; height: 180px;
+    width: 200px; height: 200px;
     margin: 0 auto 16px;
     display: flex; align-items: center; justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
   }
   .gif-wrap img {
     width: 100%; height: 100%;
-    object-fit: contain; border-radius: 16px;
+    object-fit: cover; border-radius: 20px;
   }
 
   .slide-title {
@@ -149,9 +151,10 @@
     cursor: pointer;
     transition: transform 0.3s;
     margin: 20px 0;
+    font-size: 9rem;
+    animation: bounce 1.2s ease-in-out infinite;
   }
-  #slide-4 .envelope-wrap:hover { transform: scale(1.06) rotate(-2deg); }
-  #slide-4 .envelope-wrap img { width: 220px; filter: drop-shadow(0 8px 24px rgba(192,57,106,0.3)); }
+  #slide-4 .envelope-wrap:hover { transform: scale(1.1); }
   #slide-4 .click-label {
     font-family: 'Dancing Script', cursive;
     font-size: 1.5rem; color: #c0396a; font-weight: 700;
@@ -185,8 +188,10 @@
     display: block;
   }
   #slide-5 .cat-gif {
-    width: 160px; margin-top: 10px;
-    border-radius: 12px;
+    width: 180px; height: 180px;
+    margin-top: 10px;
+    border-radius: 16px;
+    object-fit: cover;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
   }
 
@@ -289,6 +294,7 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 2.5rem;
     box-shadow: 0 3px 14px rgba(192,57,106,0.15);
+    flex-direction: column; gap: 4px;
   }
   #slide-8 .peace-card {
     background: #fff; border-radius: 24px;
@@ -325,6 +331,16 @@
     0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
     100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
   }
+
+  /* GIF iframe embed */
+  .giphy-embed {
+    width: 200px; height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 0 auto 16px;
+    border: none;
+    display: block;
+  }
 </style>
 </head>
 <body>
@@ -335,12 +351,12 @@
 
   <!-- SLIDE 0 — Landing -->
   <div class="slide active" id="slide-0">
-    <div class="gif-wrap">
-      <!-- 🖼️ GIF: sad cat sorry — replace src with your own from tenor.com -->
-      <img src="https://media.tenor.com/vKHflUMN6v8AAAAi/im-sorry-please-forgive-me.gif"
-           alt="sorry cat"
-           onerror="this.src='https://media.giphy.com/media/3o7TKwxYkeW0ZvTqsU/giphy.gif'"/>
-    </div>
+    <!-- Sad sorry cat GIF -->
+    <iframe
+      class="giphy-embed"
+      src="https://giphy.com/embed/3o7TKwxYkeW0ZvTqsU"
+      allowFullScreen>
+    </iframe>
     <div class="landing-title">I Messed Up, Teju 😢</div>
     <div class="landing-sub">But I'm ready to make it right.<br/>Will you hear me out?</div>
     <button class="btn-listen" onclick="goTo(1)">Listen to my heart 💛</button>
@@ -348,12 +364,12 @@
 
   <!-- SLIDE 1 — I Know I Hurt You -->
   <div class="slide" id="slide-1">
-    <div class="gif-wrap">
-      <!-- 🖼️ GIF: cute bunny holding heart — search "cute bunny heart sorry" on tenor.com -->
-      <img src="https://media.tenor.com/j7DhE2VKPCEAAAAC/cute-bunny.gif"
-           alt="bunny heart"
-           onerror="this.style.display='none'"/>
-    </div>
+    <!-- Cute bunny with heart GIF -->
+    <iframe
+      class="giphy-embed"
+      src="https://giphy.com/embed/l0HlFPNndZgxGBSBi"
+      allowFullScreen>
+    </iframe>
     <div class="slide-title italic">I Know I Hurt You</div>
     <div class="msg-card">I messed up... and I'm really sorry for that.</div>
     <div class="btn-row">
@@ -364,12 +380,12 @@
 
   <!-- SLIDE 2 — You Mean Everything -->
   <div class="slide" id="slide-2">
-    <div class="gif-wrap">
-      <!-- 🖼️ GIF: cute bear hug — search "cute bear hug love" on tenor.com -->
-      <img src="https://media.tenor.com/j2FYECb9PgcAAAAi/bear-hug.gif"
-           alt="bears hugging"
-           onerror="this.style.display='none'"/>
-    </div>
+    <!-- Two bears hugging GIF -->
+    <iframe
+      class="giphy-embed"
+      src="https://giphy.com/embed/kHU8W94VS329y"
+      allowFullScreen>
+    </iframe>
     <div class="slide-title italic">You Mean Everything</div>
     <div class="msg-card">I promise I'll be better for you.</div>
     <div class="btn-row">
@@ -380,12 +396,12 @@
 
   <!-- SLIDE 3 — I'm Truly Sorry -->
   <div class="slide" id="slide-3">
-    <div class="gif-wrap" style="background:#fff; border-radius:16px; padding:10px; box-shadow:0 3px 16px rgba(192,57,106,0.12);">
-      <!-- 🖼️ GIF: bear lying down sorry — search "sorry na bear cute" on tenor.com -->
-      <img src="https://media.tenor.com/nDFdgCnMZs0AAAAi/sorry-bear.gif"
-           alt="sorry bear"
-           onerror="this.style.display='none'"/>
-    </div>
+    <!-- Sad bear sorry GIF -->
+    <iframe
+      class="giphy-embed"
+      src="https://giphy.com/embed/xT9IgG50Lg7russbDa"
+      allowFullScreen>
+    </iframe>
     <div class="slide-title italic">I'm Truly Sorry</div>
     <div class="msg-card">Please forgive me... You mean so much to me.</div>
     <div class="btn-row">
@@ -397,10 +413,7 @@
   <!-- SLIDE 4 — Envelope -->
   <div class="slide" id="slide-4">
     <div class="envelope-wrap" onclick="goTo(5)">
-      <!-- 🖼️ IMAGE: envelope — click opens the letter -->
-      <img src="https://em-content.zobj.net/source/animated-noto-color-emoji/356/envelope-with-arrow_1f4e9.gif"
-           alt="envelope"
-           onerror="this.outerHTML='<div style=\'font-size:9rem;cursor:pointer;\'>💌</div>'"/>
+      💌
     </div>
     <div class="click-label">CLICK TO OPEN ❤️</div>
   </div>
@@ -414,11 +427,13 @@
       Please forgive me if I hurt you or wasted even a little of your precious time. I promise I didn't mean to. 🥺🎁<br/><br/>
       You are everything to me, and losing your smile because of me is the worst feeling in the world. I'll always try to be better for you. 💕
     </div>
-    <!-- 🖼️ GIF: cute sorry cat — search "itna gussa cat" or "sorry cat cute" on tenor.com -->
-    <img class="cat-gif"
-         src="https://media.tenor.com/F4BRigDTt6kAAAAi/cat-sorry.gif"
-         alt="sorry cat"
-         onerror="this.style.display='none'"/>
+    <!-- Cute sorry cat GIF -->
+    <iframe
+      src="https://giphy.com/embed/VbnUQpnihPSIgIXuZv"
+      width="180" height="180"
+      style="border-radius:16px; border:none; display:block; margin:0 auto;"
+      allowFullScreen>
+    </iframe>
     <div class="btn-row" style="margin-top:16px;">
       <button class="btn-back" onclick="goTo(4)">← Back</button>
       <button class="btn-next" onclick="goTo(6)">Next →</button>
@@ -429,10 +444,13 @@
   <div class="slide" id="slide-6">
     <div class="meter-card">
       <div class="meter-title">FORGIVENESS METER ❤️</div>
-      <!-- 🖼️ GIF: sad bear lying down "sorry na" — search on tenor.com -->
-      <img src="https://media.tenor.com/nDFdgCnMZs0AAAAi/sorry-bear.gif"
-           alt="sorry bear" style="width:140px; height:140px; object-fit:contain;"
-           onerror="this.style.display='none'"/>
+      <!-- Sad bear lying down GIF -->
+      <iframe
+        src="https://giphy.com/embed/xT9IgG50Lg7russbDa"
+        width="150" height="150"
+        style="border-radius:16px; border:none; display:block;"
+        allowFullScreen>
+      </iframe>
       <div class="progress-bar-bg">
         <div class="progress-bar-fill" id="progressFill"></div>
       </div>
@@ -448,21 +466,21 @@
     <div class="gifts-title">🎁 Virtual Gifts For You, Teju</div>
 
     <div class="gift-card">
-      <div style="font-size:3rem;">💐</div>
+      <div style="font-size:3.5rem;">💐</div>
       <div class="gift-name">FRESH BLOOMS 🌸</div>
       <div class="gift-desc">Valid for 1 bouquet delivery + unlimited forehead kisses 💕</div>
       <div class="redeemable">✅ Redeemable anytime</div>
     </div>
 
     <div class="gift-card">
-      <div style="font-size:3rem;">🧸</div>
+      <div style="font-size:3.5rem;">🧸</div>
       <div class="gift-name">CUDDLE PASS 🐻</div>
       <div class="gift-desc">Valid for unlimited hugs, cuddles & no drama day 🤩</div>
       <div class="redeemable">✅ Redeemable anytime</div>
     </div>
 
     <div class="gift-card">
-      <div style="font-size:3rem;">🍫</div>
+      <div style="font-size:3.5rem;">🍫</div>
       <div class="gift-name">SWEET TREAT 🍫</div>
       <div class="gift-desc">Valid for your fav chocolate + a cute date 🥰</div>
       <div class="redeemable">✅ Redeemable anytime</div>
@@ -477,9 +495,9 @@
   <!-- SLIDE 8 — Peace Treaty -->
   <div class="slide" id="slide-8">
     <div class="stickers-row">
-      <div class="sticker">🕺</div>
-      <div class="sticker">🐻<br/><span style="font-size:0.6rem;color:#c0396a;">I love you berry much</span></div>
-      <div class="sticker">🌸<br/><span style="font-size:0.6rem;color:#c0396a;">flowers for my sweetheart!</span></div>
+      <div class="sticker">🕺<span style="font-size:0.55rem;color:#c0396a;">Aaa Lag Jaa Gale</span></div>
+      <div class="sticker">🐻<span style="font-size:0.55rem;color:#c0396a;">I love you berry much</span></div>
+      <div class="sticker">🌸<span style="font-size:0.55rem;color:#c0396a;">flowers for my sweetheart!</span></div>
     </div>
     <div class="peace-card">
       <div class="pt-title">PEACE TREATY SIGNED! 🕊️</div>
@@ -555,7 +573,7 @@
       setTimeout(() => goTo(7), 1800);
     } else {
       const phrases = ['','Keep going! 💕','A little more! 🥺','Almost there! 💗',
-                       'You\'re so kind! 🌸','My heart is healing! 💓',
+                       "You're so kind! 🌸",'My heart is healing! 💓',
                        'So close! 💗','Just a bit more! 💕','Almost! 🥹',''];
       msg.textContent = phrases[stepIdx] || '';
       phrases[stepIdx] ? msg.classList.add('show') : msg.classList.remove('show');
